@@ -3,25 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./src/css/styles.css" />
     <script src="./src/js/main.js" defer></script>
     <title>e-commerce</title>
   </head>
   <body>
-    <header class="content__navbar">
-      <nav class="navbar">
-        <a href="">STORE</a>
-        <i class='bx bx-shopping-bag bx-lg bx-tada icon__cart' ></i>
+    <header class="header">
+      <nav class="header__navbar">
+        <a href="#home" class="header-navbar__logo">
+          <title>Logo academlo</title>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 48.92 56.48"
+            class="nav_logo-icon"
+          >
+            <title>Academlo Logo</title>
+            <g>
+              <g>
+                <path
+                  d="M28.58,15.39H25.16L35.78,36H31.49L20.67,15.71,8.23,38.82H18.94l3-5.43h-3.4l-1.47,2.54h-4l2.69-5.09H25.85l4.28,8H40.67ZM17.23,28.21l3.57-6.6,3.57,6.6Z"
+                ></path>
+              </g>
+            </g>
+          </svg>
+          <span class="store__logo">STORE</span>
+        </a>
+        <ul class="navbar__menu">
+          <li>HOME</li>
+          <li>PRODUCTS</li>
+        </ul>
+        <div class="navbar__icons">
+          <i class='bx bxs-moon bx-md' id="iconMoon"></i>
+          <i class="bx bx-shopping-bag bx-lg bx-tada icon__cart" id="iconShowBag"></i>
+          
+
+        </div>
+
+        
       </nav>
     </header>
     <div class="container">
-    <div class="products"></div>
+      <div class="products"></div>
     </div>
     <div class="cart">
       <div class="cart__products"></div>
       <div class="cart__total"></div>
     </div>
-    
   </body>
 </html>

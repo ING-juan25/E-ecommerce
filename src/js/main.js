@@ -22,7 +22,7 @@ function printProduct(store) {
       <h3>${name}</h3>
       <p>$${price}.0 -  ${quantity} unidades</p>
       <div class="product__btn">
-      <i class='bx bxs-plus-circle bx-md bx-tada cart-plus'></i>
+      <i class='bx bxs-plus-circle bx-md bx-tada btn_plus'id=${id}></i>
       </div>      
       </div>
       </div>
@@ -54,16 +54,19 @@ async function main() {
   handleShowCart() 
   const productsHTML = document.querySelector(".products")
   productsHTML.addEventListener("click",(e)=>{
-    if (e.target.classList.contains("cart-plus")) {
+    if (e.target.classList.contains("btn_plus")) {     
       const id = Number(e.target.id)
       const productFound = store.products.find((product) =>{
         return product.id === id;
+
+        
 
       })
       console.log(productFound);
     }
    
   })
+
  
 }
 main();
