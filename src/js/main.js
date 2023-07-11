@@ -18,12 +18,13 @@ function printProduct(store) {
       html += `
       <div class="product">
       <div class="product__img">
-      <img src="${image}" alt="">
-      <h3>${name}</h3>
-      <p>$${price}.0 -  ${quantity} unidades</p>
-      <div class="product__btn">
+      <img src="${image}" alt="">      
+      </div>
+      <div class="product__info">
+      <h4>${name}</h4>
+      <h5>$${price}.0 -  ${quantity} unidades
       <i class='bx bxs-plus-circle bx-md bx-tada btn_plus'id=${id}></i>
-      </div>      
+      </h5>           
       </div>
       </div>
       `;
