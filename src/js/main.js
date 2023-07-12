@@ -21,8 +21,8 @@ function printProduct(store) {
       <img src="${image}" alt="">      
       </div>
       <div class="product__info">
-      <h4>${name}</h4>
-      <h5>$${price}.0 -  ${quantity} unidades
+      <h4>${name} <span> | <b>Unit</b>: ${quantity} </span> </h4>
+      <h5>$${price}.0  
       <i class='bx bxs-plus-circle bx-md bx-tada btn_plus'id=${id}></i>
       </h5>           
       </div>
