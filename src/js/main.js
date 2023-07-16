@@ -182,7 +182,7 @@ async function main() {
        
         
       }else{
-        alert('Compra algo primero') 
+        // alert('Compra algo primero') 
          arrayComprar.push(product)
           
                  
