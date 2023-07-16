@@ -10,6 +10,21 @@ async function getProducts() {
     console.log("Esto es un error: ");
   }
 }
+function printTotal(store) {
+  const infoTotal = document.querySelector(".totalProduct");
+  const infoAmount = document.querySelector(".totalPrice");
+
+  let totalProducts = 0;
+  let totalamount = 0;
+  for (const key in store.cart) {
+    const { amount, price } = store.cart[key];
+    totalProducts += amount;
+    totalamount += amount * price;
+  }
+
+  infoTotal.textContent = totalProducts;
+  infoAmount.textContent = totalamount;
+}
 
 function validateAmountQuatity(store) {
   document.querySelector(".cart__products").addEventListener("click", (e) => {
@@ -17,8 +32,8 @@ function validateAmountQuatity(store) {
       if (e.target.classList.contains("bx-minus")) {
         const id = Number(e.target.parentElement.id);
         if (store.cart[id].amount === 1) {
-          const response = confirm("Seguro quieres eliminar")
-          if(response)delete store.cart[id];
+          const response = confirm("Seguro quieres eliminar");
+          if (response) delete store.cart[id];
         } else {
           store.cart[id].amount--;
         }
@@ -35,14 +50,14 @@ function validateAmountQuatity(store) {
 
       if (e.target.classList.contains("bxs-trash")) {
         const id = Number(e.target.parentElement.id);
-        const response = confirm("Seguro quieres eliminar")
-          if(response)delete store.cart[id];
+        const response = confirm("Seguro quieres eliminar");
+        if (response) delete store.cart[id];
       }
       localStorage.setItem("cart", JSON.stringify(store.cart));
       printProductInCart(store);
+      printTotal(store);
     }
   });
-  
 }
 
 function printProduct(store) {
@@ -82,28 +97,28 @@ function printProductInCart(store) {
 
     html += `
       <div class="cart__product">
-      <div class="cart__product__img">
-      <img src="${image}" alt="" />
-      </div>
-      <div class="cart__product__body">
-      <p>
-      <b>${name}</b>
-      </p>
-      <p>
-      <small>price: $${price}.0 | <b>
-      $${amount * price}.0</small>
-      </b>
-      </p> 
-      <p>
-      <small>disponibles: ${quantity}
-      </p>    
-      <div class="cart__product__opt" id=${id}>
-      <i class='bx bx-minus'></i>
-      <span>${amount}</span>
-      <i class='bx bx-plus'></i>
-      <i class='bx bxs-trash' ></i>
-      </div>
-      </div>
+        <div class="cart__product__img">
+          <img src="${image}" alt="" />
+        </div>
+        <div class="cart__product__body">
+          <p>
+            <b>${name}</b>
+          </p>
+          <p>
+            <small>price: $${price}.0 | <b>
+            $${amount * price}.0 </b></small>
+      
+          </p> 
+          <p>
+            <small>disponibles: ${quantity}</small>
+          </p>    
+          <div class="cart__product__opt" id="${id}">
+            <i class='bx bx-minus'></i>
+            <span>${amount}</span>
+            <i class='bx bx-plus'></i>
+            <i class='bx bxs-trash' ></i>
+          </div>
+        </div>
 
       </div>
 
@@ -112,6 +127,7 @@ function printProductInCart(store) {
 
   document.querySelector(".cart__products").innerHTML = html;
 }
+
 function addProductCart(store) {
   const productsHTML = document.querySelector(".products");
   productsHTML.addEventListener("click", (e) => {
@@ -125,7 +141,7 @@ function addProductCart(store) {
           alert("Ya no hay más unidades disponibles");
         } else {
           store.cart[id].amount++;
-        }        
+        }
       } else {
         store.cart[productFound.id] = {
           ...productFound,
@@ -134,12 +150,6 @@ function addProductCart(store) {
       }
       localStorage.setItem("cart", JSON.stringify(store.cart));
       printProductInCart(store);
-
-      let totalProduct=10;
-      let totalPrice=0;
-
-      document.querySelector("#totalProduct").textContent = totalProduct;
-      document.querySelector("#totalPrice").textContent = totalPrice;
     }
   });
 }
@@ -155,8 +165,7 @@ async function main() {
   handleShowCart();
   addProductCart(store);
   printProductInCart(store);
-  validateAmountQuatity(store)
-
-  
+  validateAmountQuatity(store);
+  printTotal(store);
 }
 main();
