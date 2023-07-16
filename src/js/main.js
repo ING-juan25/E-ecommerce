@@ -24,6 +24,7 @@ function printTotal(store) {
 
   infoTotal.textContent = totalProducts;
   infoAmount.textContent = totalamount;
+  
 }
 
 function validateAmountQuatity(store) {
@@ -150,6 +151,7 @@ function addProductCart(store) {
       }
       localStorage.setItem("cart", JSON.stringify(store.cart));
       printProductInCart(store);
+      printTotal(store)
     }
   });
 }
@@ -167,5 +169,38 @@ async function main() {
   printProductInCart(store);
   validateAmountQuatity(store);
   printTotal(store);
+  
+  document.querySelector('.button_total').addEventListener('click', ()=>{
+    let arrayComprar = [];
+    store.products.forEach(product => {
+      if (store.cart[product.id]) {
+        let respose = confirm('Compra exitosa!!')
+        if (respose) {
+          arrayComprar.push({...product, quantity:product.quantity - store.cart[product.id].amount})
+        }  
+       
+       
+        
+      }else{
+        alert('Compra algo primero') 
+         arrayComprar.push(product)
+          
+                 
+      }
+      
+      
+    });
+    store.products = arrayComprar
+    store.cart = {}
+    localStorage.setItem('products',JSON.stringify(store.products))
+    localStorage.setItem('cart',JSON.stringify(store.cart))
+    printProductInCart(store)
+    printProduct(store)
+    printTotal(store)
+    
+   })
+ 
+
+
 }
 main();
